@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Example from './/components/hock';
 import * as serviceWorker from './serviceWorker';
-import TodoRouter from './router/TodoRouter'
+import TodoRouter from './router/TodoRouter';
 import Todo from './components/Todo';
 ReactDOM.render(<TodoRouter/>, document.getElementById('root'));
 

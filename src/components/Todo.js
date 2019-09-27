@@ -7,16 +7,17 @@ class Todo extends Component {
     {
         todoItems : [ ],
         newTodo : " "
+    } 
+    handleInput = (e) =>{
+        this.setState({individualItem: e.target.value})
     }
-    // handleFilterTodos = (newTodo, individualItem) =>{
-  
-    //     this.setState((prevState)=>{
-    //         return {
-    //             newTodo : prevState.todoItems.filter(todoItems => newTodo || individualItem)
-               
-    //         }
-    //     })
-    // }
+    handleFilterTodos = (individualItem) =>{
+       this.setState((prevState) => {
+        return {
+            todoItems: prevState.todoItems.filter( item => item === individualItem.includes( this.handleInput() ) )
+        }
+       })
+    }
     handleRemoveOneItem = (individualItem) =>{
         this.setState((prevState) =>{
             return {
@@ -69,11 +70,11 @@ class Todo extends Component {
                 <NavLink to="/likes">Go To Like Page</NavLink>
                 <Header title="My Todo App"/>
                 <h3>Welcome to my Todo app </h3>
-                <input type="text" placeholder ="Search for your todos" onChange={this.handleFilterTodos}  />
+                <input type="text" placeholder ="Search for your todos" onInput = {this.handleFilterTodos}  />
                 <form onSubmit={this.handleSubmit}>
                     <label  htmlFor="">Todoitems</label>
                         <input  type="text" value={this.state.newTodo} onChange={this.handleChange}/>
-                        <button>Submit</button>
+                        <button>Submit </button>
                 </form>
                 {
                     this.state.todoItems.map(item =>
@@ -82,6 +83,9 @@ class Todo extends Component {
                 <br/>
                 <hr/>
                 <button onClick={this.handleRemoveAllItem}>Remove All</button>
+                <h1>There is time for everything</h1>
+                <h1>There is time for everything</h1>
+                <h1>There is time for everything</h1>
             </div>
         )
     }
